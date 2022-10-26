@@ -6,7 +6,7 @@ namespace DH8G3K_HFT_2022231.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World-!");
         }
     }
 }
