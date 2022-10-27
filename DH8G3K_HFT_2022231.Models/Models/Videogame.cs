@@ -35,7 +35,13 @@ namespace DH8G3K_HFT_2022231.Models
 
         public Videogame(string line)
         {
-            
+            string[] split = line.Split('#');
+            VideogameId = int.Parse(split[0]);
+            Title = split[1];
+            Income = double.Parse(split[2]);
+            PublisherId = int.Parse(split[3]);
+            Release = DateTime.Parse(split[4].Replace('*', '.'));
+            Rating = double.Parse(split[5]);
         }
     }
 }
