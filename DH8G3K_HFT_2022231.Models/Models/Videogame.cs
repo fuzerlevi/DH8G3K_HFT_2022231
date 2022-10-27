@@ -19,10 +19,14 @@ namespace DH8G3K_HFT_2022231.Models
         public string Title { get; set; }
 
         [Range(0, 10000)]
-        public int Income { get; set; }
+        public double Income { get; set; }
 
         [Range(0, 10)]
-        public int Rating { get; set; }
+        public double Rating { get; set; }
+
+        public DateTime Release { get; set; }
+
+        public int PublisherId { get; set; }
 
         public Videogame()
         {
@@ -31,7 +35,7 @@ namespace DH8G3K_HFT_2022231.Models
 
         public Videogame(string line)
         {
-
+            
         }
     }
 }
