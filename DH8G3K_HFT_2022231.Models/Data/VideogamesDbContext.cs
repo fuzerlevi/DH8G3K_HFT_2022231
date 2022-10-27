@@ -28,5 +28,7 @@ namespace DH8G3K_HFT_2022231.Models.Data
                 builder.UseSqlServer(conn);
             }
         }
+
+
     }
 }

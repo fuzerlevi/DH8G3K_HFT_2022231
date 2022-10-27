@@ -23,5 +23,15 @@ namespace DH8G3K_HFT_2022231.Models
 
         [Range(0, 10)]
         public int Rating { get; set; }
+
+        public Videogame()
+        {
+
+        }
+
+        public Videogame(string line)
+        {
+
+        }
     }
 }

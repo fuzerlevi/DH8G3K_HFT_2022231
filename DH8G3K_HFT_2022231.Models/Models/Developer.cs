@@ -17,5 +17,15 @@ namespace DH8G3K_HFT_2022231.Models
         [Required]
         [StringLength(240)]
         public string DeveloperName { get; set; }
+
+        public Developer()
+        {
+
+        }
+
+        public Developer(string line)
+        {
+
+        }
     }
 }
