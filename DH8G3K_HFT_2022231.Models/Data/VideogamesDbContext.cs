@@ -17,5 +17,16 @@ namespace DH8G3K_HFT_2022231.Models.Data
         {
             this.Database.EnsureCreated();
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            if (!builder.IsConfigured)
+            {
+                string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;
+                AttachDbFilename=|DataDirectory|\videogames.mdf;Integrated Security=True;MultipleActiveResultSets=true";
+
+                builder.UseSqlServer(conn);
+            }
+        }
     }
 }
