@@ -31,7 +31,32 @@ namespace DH8G3K_HFT_2022231.Models.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Videogame>(videogame => videogame
+                    .HasOne<Franchise>()
+                    .WithMany()
+                    .HasForeignKey(videogame => videogame.FranchiseId)
+                    .OnDelete(DeleteBehavior.Cascade));
+
+            modelBuilder.Entity<Franchise>(franchise => franchise
+                    .HasOne<Developer>()
+                    .WithMany()
+                    .HasForeignKey(videogame => videogame.DeveloperId)
+                    .OnDelete(DeleteBehavior.Cascade));
+
+            modelBuilder.Entity<Videogame>().HasData(new Videogame[]
+            {
+                new Videogame(),
+            });
+
+            modelBuilder.Entity<Developer>().HasData(new Developer[]
+            {
+                new Developer(),
+            });
+
+            modelBuilder.Entity<Franchise>().HasData(new Franchise[]
+            {
+                new Franchise(),
+            });
         }
     }
 }

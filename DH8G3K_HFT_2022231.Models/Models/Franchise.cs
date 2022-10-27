@@ -21,6 +21,8 @@ namespace DH8G3K_HFT_2022231.Models
         [Range(1,10)]
         public int NumberOfGames { get; set; }
 
+        public int DeveloperId { get; set; }
+
         public Franchise()
         {
 
@@ -30,8 +32,9 @@ namespace DH8G3K_HFT_2022231.Models
         {
             string[] split = line.Split('#');
             FranchiseId = int.Parse(split[0]);
-            FranchiseName = split[1];
-            NumberOfGames = int.Parse(split[2]);
+            DeveloperId = int.Parse(split[1]);
+            FranchiseName = split[2];
+            NumberOfGames = int.Parse(split[3]);
         }
     }
 }
