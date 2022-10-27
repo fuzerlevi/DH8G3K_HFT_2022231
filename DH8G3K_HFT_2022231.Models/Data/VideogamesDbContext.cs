@@ -45,17 +45,29 @@ namespace DH8G3K_HFT_2022231.Models.Data
 
             modelBuilder.Entity<Videogame>().HasData(new Videogame[]
             {
-                new Videogame(),
+                new Videogame("1#1#Dark Souls: Prepare To Die Edition#2011*09*22#9"),
+                new Videogame("2#1#Dark Souls: REMASTERED#2018*05*24#9,5"),
+                new Videogame("3#1#Dark Souls II#2014*03*11#9"),
+                new Videogame("4#1#Dark Souls II: Scholar of the First Sin#2015*04*01#9"),
+                new Videogame("5#1#Dark Souls III#2016*03*24#9,5"),
+
+                new Videogame("6#2#Elden Ring#2022*02*25#9,7"),
+
+                new Videogame("7#3#Overwatch#2016*05*24#10"),
+                new Videogame("8#3#Overwatch 2#2022*10*04#8"),
             });
 
             modelBuilder.Entity<Developer>().HasData(new Developer[]
             {
-                new Developer(),
+                new Developer("1#FromSoftware"),
+                new Developer("2#Blizzard Entertainment"),
             });
 
             modelBuilder.Entity<Franchise>().HasData(new Franchise[]
             {
-                new Franchise(),
+                new Franchise("1#1#Dark Souls Franchise#5"),
+                new Franchise("2#1#Elden Ring Franchise#1"),
+                new Franchise("3#2#Overwatch Franchise#2"),
             });
         }
     }

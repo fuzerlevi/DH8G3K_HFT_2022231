@@ -18,9 +18,6 @@ namespace DH8G3K_HFT_2022231.Models
         [StringLength(240)]
         public string Title { get; set; }
 
-        [Range(0, 10000)]
-        public double Income { get; set; }
-
         [Range(0, 10)]
         public double Rating { get; set; }
 
@@ -30,7 +27,7 @@ namespace DH8G3K_HFT_2022231.Models
 
         public Videogame()
         {
-
+            
         }
 
         public Videogame(string line)
@@ -39,7 +36,6 @@ namespace DH8G3K_HFT_2022231.Models
             VideogameId = int.Parse(split[0]);
             FranchiseId = int.Parse(split[1]);
             Title = split[2];
-            Income = double.Parse(split[3]);
             Release = DateTime.Parse(split[4].Replace('*', '.'));
             Rating = double.Parse(split[5]);
         }
