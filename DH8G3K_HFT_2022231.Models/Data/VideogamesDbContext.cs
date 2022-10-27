@@ -13,6 +13,9 @@ namespace DH8G3K_HFT_2022231.Models.Data
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Franchise> Franchises { get; set; }
 
-        
+        public VideogamesDbContext()
+        {
+            this.Database.EnsureCreated();
+        }
     }
 }
