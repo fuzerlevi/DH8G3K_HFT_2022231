@@ -22,24 +22,23 @@ namespace DH8G3K_HFT_2022231.Models.Data
         {
             if (!builder.IsConfigured)
             {
-                string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;
-                AttachDbFilename=|DataDirectory|\videogames.mdf;Integrated Security=True;MultipleActiveResultSets=true";
-
-                builder.UseSqlServer(conn);
+                builder
+                    .UseLazyLoadingProxies()
+                    .UseInMemoryDatabase("videogame");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Videogame>(videogame => videogame
-                    .HasOne<Franchise>()
-                    .WithMany()
+                    .HasOne(videogame => videogame.Franchise)
+                    .WithMany(Franchise => Franchise.Videogames)
                     .HasForeignKey(videogame => videogame.FranchiseId)
                     .OnDelete(DeleteBehavior.Cascade));
 
             modelBuilder.Entity<Franchise>(franchise => franchise
-                    .HasOne<Developer>()
-                    .WithMany()
+                    .HasOne(franchise => franchise.Developer)
+                    .WithMany(Developer => Developer.Franchises)
                     .HasForeignKey(videogame => videogame.DeveloperId)
                     .OnDelete(DeleteBehavior.Cascade));
 

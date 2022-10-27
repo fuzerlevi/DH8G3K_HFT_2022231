@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DH8G3K_HFT_2022231.Models
 {
-    class Videogame
+    public class Videogame
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +24,8 @@ namespace DH8G3K_HFT_2022231.Models
         public DateTime Release { get; set; }
 
         public int FranchiseId { get; set; }
+
+        public virtual Franchise Franchise { get; set; }
 
         public Videogame()
         {

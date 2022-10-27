@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DH8G3K_HFT_2022231.Models
 {
-    class Developer
+    public class Developer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,9 +18,10 @@ namespace DH8G3K_HFT_2022231.Models
         [StringLength(240)]
         public string DeveloperName { get; set; }
 
+        public virtual ICollection<Franchise> Franchises { get; set; }
         public Developer()
         {
-
+            Franchises = new HashSet<Franchise>();
         }
 
         public Developer(string line)
@@ -28,6 +29,7 @@ namespace DH8G3K_HFT_2022231.Models
             string[] split = line.Split('#');
             DeveloperId = int.Parse(split[0]);
             DeveloperName = split[1];
+            Franchises = new HashSet<Franchise>();
         }
     }
 }

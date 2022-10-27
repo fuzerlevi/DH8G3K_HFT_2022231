@@ -1,11 +1,6 @@
-﻿using DH8G3K_HFT_2022231.Models.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace DH8G3K_HFT_2022231.Models
+namespace TESZTER_PROJEKT
 {
     class Program
     {
