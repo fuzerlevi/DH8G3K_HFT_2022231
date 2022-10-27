@@ -25,7 +25,9 @@ namespace DH8G3K_HFT_2022231.Models
 
         public Developer(string line)
         {
-            
+            string[] split = line.Split('#');
+            DeveloperId = int.Parse(split[0]);
+            DeveloperName = split[1];
         }
     }
 }
