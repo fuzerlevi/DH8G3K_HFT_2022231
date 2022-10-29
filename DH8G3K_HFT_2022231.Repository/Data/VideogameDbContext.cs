@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DH8G3K_HFT_2022231.Repository.Data
 {
-    internal class VideogameDbContext : DbContext
+    public class VideogameDbContext : DbContext
     {
         public DbSet<Videogame> Videogames { get; set; }
         public DbSet<Developer> Developers { get; set; }
