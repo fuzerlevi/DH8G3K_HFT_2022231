@@ -23,11 +23,9 @@ namespace DH8G3K_HFT_2022231.Repository.Database
         {
             if (!builder.IsConfigured)
             {
-                string conn =
-                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\videogame.mdf;Integrated Security=True;MultipleActiveResultSets=true";
                 builder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(conn);
+                    .UseInMemoryDatabase("videogame");
             }
         }
 
