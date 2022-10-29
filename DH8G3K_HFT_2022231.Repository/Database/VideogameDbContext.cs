@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DH8G3K_HFT_2022231.Repository.Data
+namespace DH8G3K_HFT_2022231.Repository.Database
 {
     public class VideogameDbContext : DbContext
     {
