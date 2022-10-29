@@ -1,19 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DH8G3K_HFT_2022231.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DH8G3K_HFT_2022231.Models.Data
+namespace DH8G3K_HFT_2022231.Repository.Data
 {
-    class VideogamesDbContext : DbContext
+    internal class VideogameDbContext : DbContext
     {
         public DbSet<Videogame> Videogames { get; set; }
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Franchise> Franchises { get; set; }
 
-        public VideogamesDbContext()
+        public VideogameDbContext()
         {
             this.Database.EnsureCreated();
         }
@@ -22,9 +23,11 @@ namespace DH8G3K_HFT_2022231.Models.Data
         {
             if (!builder.IsConfigured)
             {
+                string conn =
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\videogame.mdf;Integrated Security=True;MultipleActiveResultSets=true";
                 builder
                     .UseLazyLoadingProxies()
-                    .UseInMemoryDatabase("videogame");
+                    .UseSqlServer(conn);
             }
         }
 

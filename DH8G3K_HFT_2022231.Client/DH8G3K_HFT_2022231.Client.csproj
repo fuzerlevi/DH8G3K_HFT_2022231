@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DH8G3K_HFT_2022231.Models\DH8G3K_HFT_2022231.Models.csproj" />
+    <ProjectReference Include="..\DH8G3K_HFT_2022231.Repository\DH8G3K_HFT_2022231.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -38,8 +38,8 @@ namespace DH8G3K_HFT_2022231.Models
             VideogameId = int.Parse(split[0]);
             FranchiseId = int.Parse(split[1]);
             Title = split[2];
-            Release = DateTime.Parse(split[4].Replace('*', '.'));
-            Rating = double.Parse(split[5]);
+            Release = DateTime.Parse(split[3].Replace('*', '.'));
+            Rating = double.Parse(split[4]);
         }
     }
 }
