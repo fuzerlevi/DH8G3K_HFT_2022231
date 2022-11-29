@@ -8,12 +8,12 @@ namespace DH8G3K_HFT_2022231.Client
 {
     class Program
     {
-        static RestService Rest;
+        static RestService rest;
         static void List(string entity)
         {
             if (entity == "Videogame")
             {
-                List<Videogame> items = Rest.Get<Videogame>("Videogame");
+                List<Videogame> items = rest.Get<Videogame>("Videogame");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -22,7 +22,7 @@ namespace DH8G3K_HFT_2022231.Client
             }
             if(entity == "Developer")
             {
-                List<Developer> items = Rest.Get<Developer>("Developer");
+                List<Developer> items = rest.Get<Developer>("Developer");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -31,7 +31,7 @@ namespace DH8G3K_HFT_2022231.Client
             }
             if (entity == "Franchise")
             {
-                List<Franchise> items = Rest.Get<Franchise>("Franchise");
+                List<Franchise> items = rest.Get<Franchise>("Franchise");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -44,22 +44,22 @@ namespace DH8G3K_HFT_2022231.Client
         {
             if (entity == "Franchise")
             {
-                Console.WriteLine("Enter the properties of the artist: ");
+                Console.WriteLine("Enter the properties of the franchise: ");
                 Console.Write("Enter the nem of the franchise: ");
                 string name = Console.ReadLine();
                 Console.Write("Enter the number of games the franchise has: ");
                 int numberofgames = int.Parse(Console.ReadLine());
                 Console.Write("Enter the developer Id of the franchise: ");
                 int developerid = int.Parse(Console.ReadLine());
-                Rest.Post(new Franchise() { FranchiseName = name, NumberOfGames = numberofgames, DeveloperId = developerid }, "franchise");
+                rest.Post(new Franchise() { FranchiseName = name, NumberOfGames = numberofgames, DeveloperId = developerid }, "franchise");
             }
             if (entity == "Developer")
             {
                 Console.WriteLine("Enter the properties of the developer: ");
                 Console.Write("Enter the name of the developer: ");
                 string name = Console.ReadLine();
-                
-                Rest.Post(new Developer() { DeveloperName = name }, "developer");
+
+                rest.Post(new Developer() { DeveloperName = name }, "developer");
             }
             if (entity == "Videogame")
             {
@@ -72,23 +72,71 @@ namespace DH8G3K_HFT_2022231.Client
                 DateTime release = DateTime.Parse(Console.ReadLine());
                 Console.Write("Enter the franchise Id of the videogame: ");
                 int franchiseid = int.Parse(Console.ReadLine());
-                Rest.Post(new Videogame() { Title = title, Rating = rating}, "videogame");
+                rest.Post(new Videogame() { Title = title, Rating = rating}, "videogame");
             }
             Console.ReadLine();
         }
         static void Update(string entity)
         {
-            Console.WriteLine(entity + " update");
-            Console.ReadLine();
+            if (entity == "Developer")
+            {
+                Console.WriteLine("Enter id of the developer you want to update: ");
+                int id = int.Parse(Console.ReadLine());
+                Developer developer = rest.Get<Developer>(id, "developer");
+                Console.WriteLine("Enter new developers's properties: ");
+                Console.WriteLine("Developer's new name: ");
+                string newname = Console.ReadLine();
+                developer.DeveloperName = newname;
+                rest.Put(developer, "developer");
+            }
+            if (entity == "Franchise")
+            {
+                Console.WriteLine("Enter id of the franchise you want to update: ");
+                int id = int.Parse(Console.ReadLine());
+                Franchise franchise = rest.Get<Franchise>(id, "franchise");
+                Console.WriteLine("Enter new franchise properties: ");
+                Console.WriteLine("Franchise name: ");
+                string newname = Console.ReadLine();
+                franchise.FranchiseName = newname;
+                rest.Put(franchise, "franchise");
+            }
+            if (entity == "Videogame")
+            {
+                Console.WriteLine("Enter id of the videogame you want to update: ");
+                int id = int.Parse(Console.ReadLine());
+                Videogame videogame = rest.Get<Videogame>(id, "videogame");
+                Console.WriteLine("Enter new videogame properties: ");
+                Console.WriteLine("Videogame title: ");
+                string newtitle = Console.ReadLine();
+                videogame.Title = newtitle;
+                rest.Put(videogame, "videogame");
+            }
         }
         static void Delete(string entity)
         {
-            Console.WriteLine(entity + " delete");
-            Console.ReadLine();
+            if (entity == "Developer")
+            {
+                Console.WriteLine("Enter id of the developer you want to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "developer");
+            }
+            if (entity == "Franchise")
+            {
+                Console.WriteLine("Enter id of the franchise you want to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "franchise");
+            }
+            if (entity == "Videogame")
+            {
+                Console.WriteLine("Enter id of the videogame you want to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "videogame");
+            }
         }
         static void Main(string[] args)
         {
-            
+            rest = new RestService("http://localhost:55120/", "videogame");
+        
             var videogameSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Videogame"))
                 .Add("Create", () => Create("Videogame"))
