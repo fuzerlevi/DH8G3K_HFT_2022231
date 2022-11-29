@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using ConsoleTools;
 using DH8G3K_HFT_2022231.Models;
+using DH8G3K_HFT_2022231.Models.Models.Helper_classes;
 
 namespace DH8G3K_HFT_2022231.Client
 {
     class Program
     {
-        static RestService rest;
+        static RestService Rest;
         static void List(string entity)
         {
             if (entity == "Videogame")
             {
-                List<Videogame> items = rest.Get<Videogame>("Videogame");
+                List<Videogame> items = Rest.Get<Videogame>("Videogame");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -22,7 +23,7 @@ namespace DH8G3K_HFT_2022231.Client
             }
             if(entity == "Developer")
             {
-                List<Developer> items = rest.Get<Developer>("Developer");
+                List<Developer> items = Rest.Get<Developer>("Developer");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -31,7 +32,7 @@ namespace DH8G3K_HFT_2022231.Client
             }
             if (entity == "Franchise")
             {
-                List<Franchise> items = rest.Get<Franchise>("Franchise");
+                List<Franchise> items = Rest.Get<Franchise>("Franchise");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -51,7 +52,7 @@ namespace DH8G3K_HFT_2022231.Client
                 int numberofgames = int.Parse(Console.ReadLine());
                 Console.Write("Enter the developer Id of the franchise: ");
                 int developerid = int.Parse(Console.ReadLine());
-                rest.Post(new Franchise() { FranchiseName = name, NumberOfGames = numberofgames, DeveloperId = developerid }, "franchise");
+                Rest.Post(new Franchise() { FranchiseName = name, NumberOfGames = numberofgames, DeveloperId = developerid }, "franchise");
             }
             if (entity == "Developer")
             {
@@ -59,7 +60,7 @@ namespace DH8G3K_HFT_2022231.Client
                 Console.Write("Enter the name of the developer: ");
                 string name = Console.ReadLine();
 
-                rest.Post(new Developer() { DeveloperName = name }, "developer");
+                Rest.Post(new Developer() { DeveloperName = name }, "developer");
             }
             if (entity == "Videogame")
             {
@@ -72,7 +73,7 @@ namespace DH8G3K_HFT_2022231.Client
                 DateTime release = DateTime.Parse(Console.ReadLine());
                 Console.Write("Enter the franchise Id of the videogame: ");
                 int franchiseid = int.Parse(Console.ReadLine());
-                rest.Post(new Videogame() { Title = title, Rating = rating}, "videogame");
+                Rest.Post(new Videogame() { Title = title, Rating = rating}, "videogame");
             }
             Console.ReadLine();
         }
@@ -82,21 +83,21 @@ namespace DH8G3K_HFT_2022231.Client
             {
                 Console.WriteLine("Enter Id of the developer you want to get: ");
                 int id = int.Parse(Console.ReadLine());
-                Developer developer = rest.Get<Developer>(id, "developer");
+                Developer developer = Rest.Get<Developer>(id, "developer");
                 Console.WriteLine($"{developer.DeveloperId}: {developer.DeveloperName}");
             }
             if (entity == "Franchise")
             {
                 Console.WriteLine("Enter Id of the franchise you want to get: ");
                 int id = int.Parse(Console.ReadLine());
-                Franchise franchise = rest.Get<Franchise>(id, "franchise");
+                Franchise franchise = Rest.Get<Franchise>(id, "franchise");
                 Console.WriteLine($"{franchise.FranchiseId}: {franchise.FranchiseName}");
             }
             if (entity == "Videogame")
             {
                 Console.WriteLine("Enter Id of the videogame you want to get: ");
                 int id = int.Parse(Console.ReadLine());
-                Videogame videogame = rest.Get<Videogame>(id, "videogame");
+                Videogame videogame = Rest.Get<Videogame>(id, "videogame");
                 Console.WriteLine($"{videogame.VideogameId}: {videogame.Title}");
             }
             Console.ReadLine();
@@ -107,34 +108,34 @@ namespace DH8G3K_HFT_2022231.Client
             {
                 Console.WriteLine("Enter id of the developer you want to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Developer developer = rest.Get<Developer>(id, "developer");
+                Developer developer = Rest.Get<Developer>(id, "developer");
                 Console.WriteLine("Enter new developers's properties: ");
                 Console.WriteLine("Developer's new name: ");
                 string newname = Console.ReadLine();
                 developer.DeveloperName = newname;
-                rest.Put(developer, "developer");
+                Rest.Put(developer, "developer");
             }
             if (entity == "Franchise")
             {
                 Console.WriteLine("Enter id of the franchise you want to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Franchise franchise = rest.Get<Franchise>(id, "franchise");
+                Franchise franchise = Rest.Get<Franchise>(id, "franchise");
                 Console.WriteLine("Enter new franchise properties: ");
                 Console.WriteLine("Franchise name: ");
                 string newname = Console.ReadLine();
                 franchise.FranchiseName = newname;
-                rest.Put(franchise, "franchise");
+                Rest.Put(franchise, "franchise");
             }
             if (entity == "Videogame")
             {
                 Console.WriteLine("Enter id of the videogame you want to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Videogame videogame = rest.Get<Videogame>(id, "videogame");
+                Videogame videogame = Rest.Get<Videogame>(id, "videogame");
                 Console.WriteLine("Enter new videogame properties: ");
                 Console.WriteLine("Videogame title: ");
                 string newtitle = Console.ReadLine();
                 videogame.Title = newtitle;
-                rest.Put(videogame, "videogame");
+                Rest.Put(videogame, "videogame");
             }
         }
         static void Delete(string entity)
@@ -143,44 +144,121 @@ namespace DH8G3K_HFT_2022231.Client
             {
                 Console.WriteLine("Enter id of the developer you want to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "developer");
+                Rest.Delete(id, "developer");
             }
             if (entity == "Franchise")
             {
                 Console.WriteLine("Enter id of the franchise you want to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "franchise");
+                Rest.Delete(id, "franchise");
             }
             if (entity == "Videogame")
             {
                 Console.WriteLine("Enter id of the videogame you want to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "videogame");
+                Rest.Delete(id, "videogame");
             }
         }
+
+        //non-cruds
+
+        //Videogame
+        static void VideogamesWithDevelopernames()
+        {
+            List<VideogameDeveloperInfo> info = Rest.Get<VideogameDeveloperInfo>("stat/VideogamesWithDevelopernames");
+            foreach (var item in info)
+            {
+                Console.WriteLine($"{item.Developername} made: \"{item.Title}\"");
+            }
+            Console.ReadLine();
+        }
+
+        static void WhenWereVideogamesMade()
+        {
+            List<VideogameYearInfo> info = Rest.Get<VideogameYearInfo>("stat/WhenWereVideogamesMade");
+            foreach (var item in info)
+            {
+                Console.WriteLine($"\"{item.Title}\" was made in {item.Release}");
+            }
+            Console.ReadLine();
+        }
+
+        static void VideogamesOfYearX()
+        {
+            Console.WriteLine("Enter a year:");
+            int year = int.Parse(Console.ReadLine());
+            List<VideogamesOfYearInfo> info = Rest.Get<List<VideogamesOfYearInfo>>(year, "stat/VideogamesOfYearX");
+            Console.WriteLine();
+            Console.WriteLine($"Videogames made in {year}:");
+            foreach (var item in info)
+            {
+                Console.WriteLine($"{item.Title}");
+            }
+            Console.ReadLine();
+        }
+
+        static void BestRatedVideogame()
+        {
+            BestRatedVideogameInfo bestrated = Rest.GetSingle<BestRatedVideogameInfo>("stat/BestRatedVideogame");
+            Console.WriteLine("The best rated videogame is:");
+            Console.WriteLine($"\"{bestrated.Title}\" with the rating of {bestrated.Rating}");
+            Console.ReadLine();
+        }
+
+        //Franchise
+        static void NumberOfGamesInFranchise()
+        {
+            List<FranchiseInfo> info = Rest.Get<FranchiseInfo>("stat/NumberOfGamesInFranchise");
+            foreach (var item in info)
+            {
+                Console.WriteLine(item.NumberOfGames);
+            }
+            Console.ReadLine();
+        }
+        
+        //Developer
+        static void TotalNumberOfGamesByDeveloper()
+        {
+            Console.WriteLine("Choose a developer by id to see how many videogames they have:");
+            int id = int.Parse(Console.ReadLine());
+            int number = Rest.Get<int>(id, "stat/TotalNumberOfGamesByDeveloper");
+            Developer developer = Rest.Get<Developer>(id, "developer");
+            Console.WriteLine($"{developer.DeveloperName} has made {number} videogames overall.");
+            Console.ReadLine();
+        }
+
         static void Main(string[] args)
         {
-            rest = new RestService("http://localhost:55120/", "videogame");
+            Rest = new RestService("http://localhost:55120/", "videogame");
         
             var videogameSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Videogame"))
                 .Add("Create", () => Create("Videogame"))
+                .Add("Read", () => Read("Videogame"))
                 .Add("Delete", () => Delete("Videogame"))
                 .Add("Update", () => Update("Videogame"))
+                .Add("Best rated videogame in franchise?", () => BestRatedVideogame())
+                .Add("Videogames of a specific year?", () => VideogamesOfYearX())
+                .Add("When was a specific videogame made?", () => WhenWereVideogamesMade())
+                .Add("Videogames with their developer's names in their titles?", () => VideogamesOfYearX())
                 .Add("Exit", ConsoleMenu.Close);
 
             var developerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Developer"))
                 .Add("Create", () => Create("Developer"))
+                .Add("Read", () => Read("Developer"))
                 .Add("Delete", () => Delete("Developer"))
                 .Add("Update", () => Update("Developer"))
+                .Add("Total number of games by developer?", () => TotalNumberOfGamesByDeveloper())
                 .Add("Exit", ConsoleMenu.Close);
 
             var franchiseSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Franchise"))
                 .Add("Create", () => Create("Franchise"))
+                .Add("Read", () => Read("Franchise"))
                 .Add("Delete", () => Delete("Franchise"))
                 .Add("Update", () => Update("Franchise"))
+                .Add("Number of games in franchise?", () => NumberOfGamesInFranchise())
                 .Add("Exit", ConsoleMenu.Close);
 
             var menu = new ConsoleMenu(args, level: 0)
