@@ -76,6 +76,31 @@ namespace DH8G3K_HFT_2022231.Client
             }
             Console.ReadLine();
         }
+        static void Read(string entity)
+        {
+            if (entity == "Developer")
+            {
+                Console.WriteLine("Enter Id of the developer you want to get: ");
+                int id = int.Parse(Console.ReadLine());
+                Developer developer = rest.Get<Developer>(id, "developer");
+                Console.WriteLine($"{developer.DeveloperId}: {developer.DeveloperName}");
+            }
+            if (entity == "Franchise")
+            {
+                Console.WriteLine("Enter Id of the franchise you want to get: ");
+                int id = int.Parse(Console.ReadLine());
+                Franchise franchise = rest.Get<Franchise>(id, "franchise");
+                Console.WriteLine($"{franchise.FranchiseId}: {franchise.FranchiseName}");
+            }
+            if (entity == "Videogame")
+            {
+                Console.WriteLine("Enter Id of the videogame you want to get: ");
+                int id = int.Parse(Console.ReadLine());
+                Videogame videogame = rest.Get<Videogame>(id, "videogame");
+                Console.WriteLine($"{videogame.VideogameId}: {videogame.Title}");
+            }
+            Console.ReadLine();
+        }
         static void Update(string entity)
         {
             if (entity == "Developer")
