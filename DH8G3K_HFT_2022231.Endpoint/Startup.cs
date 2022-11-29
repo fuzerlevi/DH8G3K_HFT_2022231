@@ -1,3 +1,7 @@
+using DH8G3K_HFT_2022231.Logic;
+using DH8G3K_HFT_2022231.Models;
+using DH8G3K_HFT_2022231.Repository;
+using DH8G3K_HFT_2022231.Repository.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +20,21 @@ namespace DH8G3K_HFT_2022231.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<VideogameDbContext>();
+
+            services.AddTransient<IRepository<Videogame>, VideogameRepository>();
+            services.AddTransient<IRepository<Developer>, DeveloperRepository>();
+            services.AddTransient<IRepository<Franchise>, FranchiseRepository>();
+
+            services.AddTransient<IVideogameLogic, VideogameLogic>();
+            services.AddTransient<IDeveloperLogic, DeveloperLogic>();
+            services.AddTransient<IFranchiseLogic, FranchiseLogic>();
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "VideogameDbApp.Endpoint", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
