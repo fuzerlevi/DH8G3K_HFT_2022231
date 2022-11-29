@@ -11,10 +11,14 @@ namespace DH8G3K_HFT_2022231.Logic
     public class FranchiseLogic : IFranchiseLogic
     {
         IRepository<Franchise> repo;
+        IRepository<Videogame> videogamerepo;
+        IRepository<Developer> developerrepo;
 
-        public FranchiseLogic(IRepository<Franchise> repo)
+        public FranchiseLogic(IRepository<Franchise> repo, IRepository<Videogame> videogamerepo, IRepository<Developer> developerrepo)
         {
             this.repo = repo;
+            this.videogamerepo = videogamerepo;
+            this.developerrepo = developerrepo;
         }
 
         public void Create(Franchise item)

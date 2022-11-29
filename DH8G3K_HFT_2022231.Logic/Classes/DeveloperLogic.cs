@@ -11,10 +11,14 @@ namespace DH8G3K_HFT_2022231.Logic
     public class DeveloperLogic : IDeveloperLogic
     {
         IRepository<Developer> repo;
+        IRepository<Videogame> videogamerepo;
+        IRepository<Franchise> franchiserepo;
 
-        public DeveloperLogic(IRepository<Developer> repo)
+        public DeveloperLogic(IRepository<Developer> repo, IRepository<Videogame> videogamerepo, IRepository<Franchise> franchiserepo)
         {
             this.repo = repo;
+            this.videogamerepo = videogamerepo;
+            this.franchiserepo = franchiserepo;
         }
 
         public void Create(Developer item)

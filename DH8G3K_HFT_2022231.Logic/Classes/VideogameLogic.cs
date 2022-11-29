@@ -11,15 +11,19 @@ namespace DH8G3K_HFT_2022231.Logic
     public class VideogameLogic : IVideogameLogic
     {
         IRepository<Videogame> repo;
+        IRepository<Developer> developerrepo;
+        IRepository<Franchise> franchiserepo;
 
-        public VideogameLogic(IRepository<Videogame> repo)
+        public VideogameLogic(IRepository<Videogame> repo, IRepository<Developer> developerrepo, IRepository<Franchise> franchiserepo)
         {
             this.repo = repo;
+            this.developerrepo = developerrepo;
+            this.franchiserepo = franchiserepo;
         }
 
         public void Create(Videogame item)
         {
-            if (item.Title.Length < 3)
+            if (item.Title.Length < 2)
             {
                 throw new ArgumentException("Title is too short.");
             }
