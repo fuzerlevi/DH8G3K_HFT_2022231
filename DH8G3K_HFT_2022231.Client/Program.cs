@@ -1,42 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ConsoleTools;
-using DH8G3K_HFT_2022231.Logic;
 using DH8G3K_HFT_2022231.Models;
-using DH8G3K_HFT_2022231.Repository;
-using DH8G3K_HFT_2022231.Repository.Database;
 
 namespace DH8G3K_HFT_2022231.Client
 {
     class Program
     {
-        static VideogameLogic videogameLogic;
-        static DeveloperLogic developerLogic;
-        static FranchiseLogic franchiseLogic;
-
+        static RestService Rest;
         static void List(string entity)
         {
             if (entity == "Videogame")
             {
-                var items = videogameLogic.ReadAll();
+                List<Videogame> items = Rest.Get<Videogame>("Videogame");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
                     Console.WriteLine(item.VideogameId + "\t" + item.Title);
                 }
             }
-            else if(entity == "Developer")
+            if(entity == "Developer")
             {
-                var items = developerLogic.ReadAll();
+                List<Developer> items = Rest.Get<Developer>("Developer");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
                     Console.WriteLine(item.DeveloperId + "\t" + item.DeveloperName);
                 }
             }
-            else if (entity == "Franchise")
+            if (entity == "Franchise")
             {
-                var items = franchiseLogic.ReadAll();
+                List<Franchise> items = Rest.Get<Franchise>("Franchise");
                 Console.WriteLine("Id" + "\t" + "Name");
                 foreach (var item in items)
                 {
@@ -47,7 +42,38 @@ namespace DH8G3K_HFT_2022231.Client
         }
         static void Create(string entity)
         {
-            Console.WriteLine(entity + " create");
+            if (entity == "Franchise")
+            {
+                Console.WriteLine("Enter the properties of the artist: ");
+                Console.Write("Enter the nem of the franchise: ");
+                string name = Console.ReadLine();
+                Console.Write("Enter the number of games the franchise has: ");
+                int numberofgames = int.Parse(Console.ReadLine());
+                Console.Write("Enter the developer Id of the franchise: ");
+                int developerid = int.Parse(Console.ReadLine());
+                Rest.Post(new Franchise() { FranchiseName = name, NumberOfGames = numberofgames, DeveloperId = developerid }, "franchise");
+            }
+            if (entity == "Developer")
+            {
+                Console.WriteLine("Enter the properties of the developer: ");
+                Console.Write("Enter the name of the developer: ");
+                string name = Console.ReadLine();
+                
+                Rest.Post(new Developer() { DeveloperName = name }, "developer");
+            }
+            if (entity == "Videogame")
+            {
+                Console.WriteLine("Enter the properties of the videogame: ");
+                Console.Write("Enter the title: ");
+                string title = Console.ReadLine();
+                Console.Write("Enter the rating of the videogame: ");
+                double rating = double.Parse(Console.ReadLine());
+                Console.Write("Enter the release date of the videogame: ");
+                DateTime release = DateTime.Parse(Console.ReadLine());
+                Console.Write("Enter the franchise Id of the videogame: ");
+                int franchiseid = int.Parse(Console.ReadLine());
+                Rest.Post(new Videogame() { Title = title, Rating = rating}, "videogame");
+            }
             Console.ReadLine();
         }
         static void Update(string entity)
@@ -62,16 +88,7 @@ namespace DH8G3K_HFT_2022231.Client
         }
         static void Main(string[] args)
         {
-            var ctx = new VideogameDbContext();
-
-            var videogameRepo = new VideogameRepository(ctx);
-            var developerRepo = new DeveloperRepository(ctx);
-            var franchiseRepo = new FranchiseRepository(ctx);
-
-            videogameLogic = new VideogameLogic(videogameRepo);
-            developerLogic = new DeveloperLogic(developerRepo);
-            franchiseLogic = new FranchiseLogic(franchiseRepo);
-
+            
             var videogameSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Videogame"))
                 .Add("Create", () => Create("Videogame"))

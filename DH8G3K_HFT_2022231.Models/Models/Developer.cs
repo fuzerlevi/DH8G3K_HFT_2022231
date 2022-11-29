@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DH8G3K_HFT_2022231.Models
@@ -18,6 +19,7 @@ namespace DH8G3K_HFT_2022231.Models
         [StringLength(240)]
         public string DeveloperName { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Franchise> Franchises { get; set; }
         public Developer()
         {

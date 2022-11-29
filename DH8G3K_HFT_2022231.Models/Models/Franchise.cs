@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DH8G3K_HFT_2022231.Models
@@ -25,6 +26,7 @@ namespace DH8G3K_HFT_2022231.Models
 
         public virtual Developer Developer { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Videogame> Videogames { get; set; }
 
         public Franchise()

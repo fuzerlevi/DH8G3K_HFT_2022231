@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DH8G3K_HFT_2022231.Logic\DH8G3K_HFT_2022231.Logic.csproj" />
     <ProjectReference Include="..\DH8G3K_HFT_2022231.Models\DH8G3K_HFT_2022231.Models.csproj" />
-    <ProjectReference Include="..\DH8G3K_HFT_2022231.Repository\DH8G3K_HFT_2022231.Repository.csproj" />
   </ItemGroup>
 
 </Project>
