@@ -57,7 +57,7 @@ namespace DH8G3K_HFT_2022231.Logic
         }
 
         //non-crud methods
-        public IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX()
+        public IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX(int year)
         {
             throw new NotImplementedException();
         }
