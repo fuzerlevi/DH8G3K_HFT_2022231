@@ -14,7 +14,7 @@ namespace DH8G3K_HFT_2022231.Models.Models.Helper_classes
 
         public override bool Equals(object obj)
         {
-            return (Release == (obj as VideogameYearInfo).Release && Title == (obj as VideogameYearInfo).Title);
+            return (Title == (obj as VideogameYearInfo).Title);
         }
 
         public override int GetHashCode()

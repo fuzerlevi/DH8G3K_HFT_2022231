@@ -14,13 +14,13 @@ namespace DH8G3K_HFT_2022231.Endpoint.Controllers
     [ApiController]
     public class StatController : ControllerBase
     {
-        IDeveloperLogic developertlogic;
+        IDeveloperLogic developerlogic;
         IFranchiseLogic franchiselogic;
         IVideogameLogic videogamelogic;
 
-        public StatController(IDeveloperLogic developertlogic, IFranchiseLogic franchiselogic, IVideogameLogic videogamelogic)
+        public StatController(IDeveloperLogic developerlogic, IFranchiseLogic franchiselogic, IVideogameLogic videogamelogic)
         {
-            this.developertlogic = developertlogic;
+            this.developerlogic = developerlogic;
             this.franchiselogic = franchiselogic;
             this.videogamelogic = videogamelogic;
         }
@@ -30,7 +30,7 @@ namespace DH8G3K_HFT_2022231.Endpoint.Controllers
         [HttpGet("{id}")]
         public int TotalNumberOfGamesByDeveloper(int id)
         {
-            int TotalNumberOfGamesByDeveloper = this.developertlogic.TotalNumberOfGamesByDeveloper(id);
+            int TotalNumberOfGamesByDeveloper = this.developerlogic.TotalNumberOfGamesByDeveloper(id);
             return TotalNumberOfGamesByDeveloper;
         }
 

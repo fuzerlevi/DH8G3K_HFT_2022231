@@ -60,12 +60,12 @@ namespace DH8G3K_HFT_2022231.Logic
         public IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX(int year)
         {
             var videogamesofyearx = from x in this.repo.ReadAll()
-                                where x.Release.Year == year
-                                select new VideogamesOfYearInfo()
-                                {
-                                    Title = x.Title,
-                                    Year = x.Release.Year
-                                };
+                                    where x.Release.Year == year
+                                    select new VideogamesOfYearInfo()
+                                    {
+                                        Title = x.Title,
+                                        Year = x.Release.Year
+                                    };
             return videogamesofyearx;
         }
 
