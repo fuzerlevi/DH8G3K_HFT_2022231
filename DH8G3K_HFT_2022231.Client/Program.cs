@@ -240,7 +240,7 @@ namespace DH8G3K_HFT_2022231.Client
                 .Add("Best rated videogame in franchise?", () => BestRatedVideogame())
                 .Add("Videogames of a specific year?", () => VideogamesOfYearX())
                 .Add("When was a specific videogame made?", () => WhenWereVideogamesMade())
-                .Add("Videogames with their developer's names in their titles?", () => VideogamesOfYearX())
+                .Add("Videogames with their developers names in their titles?", () => VideogamesWithDevelopernames())
                 .Add("Exit", ConsoleMenu.Close);
 
             var developerSubMenu = new ConsoleMenu(args, level: 1)

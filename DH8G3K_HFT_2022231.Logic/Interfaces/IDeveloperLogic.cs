@@ -14,5 +14,7 @@ namespace DH8G3K_HFT_2022231.Logic
         Developer Read(int id);
         IQueryable<Developer> ReadAll();
         void Update(Developer item);
+
+        int TotalNumberOfGamesByDeveloper(int id);
     }
 }

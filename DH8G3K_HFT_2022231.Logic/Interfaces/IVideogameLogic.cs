@@ -1,4 +1,6 @@
 ﻿using DH8G3K_HFT_2022231.Models;
+using DH8G3K_HFT_2022231.Models.Models.Helper_classes;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DH8G3K_HFT_2022231.Logic
@@ -10,5 +12,10 @@ namespace DH8G3K_HFT_2022231.Logic
         Videogame Read(int id);
         IQueryable<Videogame> ReadAll();
         void Update(Videogame item);
+
+        IEnumerable<VideogameDeveloperInfo> VideogamesWithDevelopernames();
+        IEnumerable<VideogameYearInfo> WhenWereVideogamesMade();
+        IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX();
+        BestRatedVideogameInfo BestRatedVideogame();
     }
 }
