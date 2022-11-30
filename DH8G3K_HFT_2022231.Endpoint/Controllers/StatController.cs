@@ -39,7 +39,7 @@ namespace DH8G3K_HFT_2022231.Endpoint.Controllers
         [HttpGet]
         public IEnumerable<FranchiseInfo> NumberOfGamesInFranchise()
         {
-            var numberofgames = this.franchiselogic.NumberOfGamesInFranchise();
+            var numberofgames = this.franchiselogic.FranchisesWithOnlyOneVideogame();
             return numberofgames;
         }
 

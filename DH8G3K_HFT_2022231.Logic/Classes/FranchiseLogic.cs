@@ -57,9 +57,16 @@ namespace DH8G3K_HFT_2022231.Logic
         }
 
         //non-crud methods
-        public IEnumerable<FranchiseInfo> NumberOfGamesInFranchise()
+        public IEnumerable<FranchiseInfo> FranchisesWithOnlyOneVideogame()
         {
-            throw new NotImplementedException();
+            var metalalbums = from a in this.repo.ReadAll()
+                              where a.Artist.Style.Equals("Metal")
+                              select new AlbumtypeInfo()
+                              {
+                                  Title = a.Title,
+                                  Musictype = a.Artist.Style
+                              };
+            return metalalbums;
         }
     }
 }

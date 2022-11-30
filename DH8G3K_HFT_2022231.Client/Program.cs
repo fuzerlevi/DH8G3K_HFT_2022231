@@ -206,9 +206,9 @@ namespace DH8G3K_HFT_2022231.Client
         }
 
         //Franchise
-        static void NumberOfGamesInFranchise()
+        static void FranchisesWithOnlyOneVideogame()
         {
-            List<FranchiseInfo> info = Rest.Get<FranchiseInfo>("stat/NumberOfGamesInFranchise");
+            List<FranchiseInfo> info = Rest.Get<FranchiseInfo>("stat/FranchisesWithOnlyOneVideogame");
             foreach (var item in info)
             {
                 Console.WriteLine(item.NumberOfGames);
@@ -258,7 +258,7 @@ namespace DH8G3K_HFT_2022231.Client
                 .Add("Read", () => Read("Franchise"))
                 .Add("Delete", () => Delete("Franchise"))
                 .Add("Update", () => Update("Franchise"))
-                .Add("Number of games in franchise?", () => NumberOfGamesInFranchise())
+                .Add("Number of games in franchise?", () => FranchisesWithOnlyOneVideogame())
                 .Add("Exit", ConsoleMenu.Close);
 
             var menu = new ConsoleMenu(args, level: 0)

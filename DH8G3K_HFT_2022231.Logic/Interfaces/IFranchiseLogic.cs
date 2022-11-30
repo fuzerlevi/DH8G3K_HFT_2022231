@@ -16,6 +16,6 @@ namespace DH8G3K_HFT_2022231.Logic
         IQueryable<Franchise> ReadAll();
         void Update(Franchise item);
 
-        IEnumerable<FranchiseInfo> NumberOfGamesInFranchise();
+        IEnumerable<FranchiseInfo> FranchisesWithOnlyOneVideogame();
     }
 }
