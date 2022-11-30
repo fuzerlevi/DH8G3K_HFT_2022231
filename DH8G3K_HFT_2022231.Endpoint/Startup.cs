@@ -24,7 +24,7 @@ namespace DH8G3K_HFT_2022231.Endpoint
         {
             services.AddSingleton<VideogameDbContext>();
 
-            services.AddTransient<IRepository<Videogame>, VideogameRepository>();
+            services.AddTransient<IRepository<Videogame>, VideogameRepository>();   
             services.AddTransient<IRepository<Developer>, DeveloperRepository>();
             services.AddTransient<IRepository<Franchise>, FranchiseRepository>();
 
@@ -35,7 +35,7 @@ namespace DH8G3K_HFT_2022231.Endpoint
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "VideogameDbApp.Endpoint", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DH8G3K_HFT_2022231.Endpoint", Version = "v1" });
             });
         }
 
