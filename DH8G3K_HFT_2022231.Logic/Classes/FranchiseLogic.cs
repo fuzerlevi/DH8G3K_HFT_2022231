@@ -59,14 +59,14 @@ namespace DH8G3K_HFT_2022231.Logic
         //non-crud methods
         public IEnumerable<FranchiseInfo> FranchisesWithOnlyOneVideogame()
         {
-            var metalalbums = from a in this.repo.ReadAll()
-                              where a.Artist.Style.Equals("Metal")
-                              select new AlbumtypeInfo()
+            var franchiseswithonlyonevideogame = from a in this.repo.ReadAll()
+                              where a.NumberOfGames.Equals(1)
+                              select new FranchiseInfo()
                               {
-                                  Title = a.Title,
-                                  Musictype = a.Artist.Style
+                                  FranchiseName = a.FranchiseName,
+                                  NumberOfGames = a.NumberOfGames
                               };
-            return metalalbums;
+            return franchiseswithonlyonevideogame;
         }
     }
 }

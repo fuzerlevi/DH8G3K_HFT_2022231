@@ -211,7 +211,7 @@ namespace DH8G3K_HFT_2022231.Client
             List<FranchiseInfo> info = Rest.Get<FranchiseInfo>("stat/FranchisesWithOnlyOneVideogame");
             foreach (var item in info)
             {
-                Console.WriteLine(item.NumberOfGames);
+                Console.WriteLine("The " + item.FranchiseName + " has only one game.");
             }
             Console.ReadLine();
         }
@@ -258,7 +258,7 @@ namespace DH8G3K_HFT_2022231.Client
                 .Add("Read", () => Read("Franchise"))
                 .Add("Delete", () => Delete("Franchise"))
                 .Add("Update", () => Update("Franchise"))
-                .Add("Number of games in franchise?", () => FranchisesWithOnlyOneVideogame())
+                .Add("Franchises with only one game?", () => FranchisesWithOnlyOneVideogame())
                 .Add("Exit", ConsoleMenu.Close);
 
             var menu = new ConsoleMenu(args, level: 0)

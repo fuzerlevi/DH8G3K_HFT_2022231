@@ -37,7 +37,7 @@ namespace DH8G3K_HFT_2022231.Endpoint.Controllers
         //franchise's non-cruds
 
         [HttpGet]
-        public IEnumerable<FranchiseInfo> NumberOfGamesInFranchise()
+        public IEnumerable<FranchiseInfo> FranchisesWithOnlyOneVideogame()
         {
             var numberofgames = this.franchiselogic.FranchisesWithOnlyOneVideogame();
             return numberofgames;

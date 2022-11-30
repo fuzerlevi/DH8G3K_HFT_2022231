@@ -10,7 +10,7 @@ namespace DH8G3K_HFT_2022231.Models.Models.Helper_classes
     {
         public string FranchiseName { get; set; }
 
-        public string NumberOfGames { get; set; }
+        public int NumberOfGames { get; set; }
 
         public override bool Equals(object obj)
         {
