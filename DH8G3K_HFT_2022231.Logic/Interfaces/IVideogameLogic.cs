@@ -13,9 +13,9 @@ namespace DH8G3K_HFT_2022231.Logic
         IQueryable<Videogame> ReadAll();
         void Update(Videogame item);
 
-        IEnumerable<VideogameDeveloperInfo> VideogamesWithDevelopernames();
+        IEnumerable<VideogameDeveloperInfo> VideogamesWithDeveloperNames();
         IEnumerable<VideogameYearInfo> WhenWereVideogamesMade();
-        IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX();
+        IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX(int year);
         BestRatedVideogameInfo BestRatedVideogame();
     }
 }

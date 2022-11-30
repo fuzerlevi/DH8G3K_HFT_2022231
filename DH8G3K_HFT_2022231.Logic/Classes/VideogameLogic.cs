@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DH8G3K_HFT_2022231.Models;
+using DH8G3K_HFT_2022231.Models.Models.Helper_classes;
 using DH8G3K_HFT_2022231.Repository;
 
 namespace DH8G3K_HFT_2022231.Logic
@@ -53,6 +54,26 @@ namespace DH8G3K_HFT_2022231.Logic
         public void Update(Videogame item)
         {
             this.repo.Update(item);
+        }
+
+        //non-crud methods
+        public IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<VideogameDeveloperInfo> VideogamesWithDeveloperNames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<VideogameYearInfo> WhenWereVideogamesMade()
+        {
+            throw new NotImplementedException();
+        }
+        public BestRatedVideogameInfo BestRatedVideogame()
+        {
+            throw new NotImplementedException();
         }
     }
 }

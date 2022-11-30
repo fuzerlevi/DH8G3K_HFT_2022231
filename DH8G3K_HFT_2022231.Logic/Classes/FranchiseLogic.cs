@@ -1,4 +1,5 @@
 ﻿using DH8G3K_HFT_2022231.Models;
+using DH8G3K_HFT_2022231.Models.Models.Helper_classes;
 using DH8G3K_HFT_2022231.Repository;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,12 @@ namespace DH8G3K_HFT_2022231.Logic
         public void Update(Franchise item)
         {
             this.repo.Update(item);
+        }
+
+        //non-crud methods
+        public IEnumerable<FranchiseInfo> NumberOfGamesInFranchise()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -54,5 +54,22 @@ namespace DH8G3K_HFT_2022231.Logic
         {
             this.repo.Update(item);
         }
+
+        //non-crud methods
+        public int TotalNumberOfGamesByDeveloper(int id)
+        {
+            var list = from x in this.videogamerepo.ReadAll()
+                       where x.Franchise.DeveloperId == id
+                       select new Videogame()
+                       {
+                           VideogameId = x.VideogameId,
+                           Title = x.Title,
+                           Rating = x.Rating,
+                           Release = x.Release,
+                           FranchiseId = x.FranchiseId
+                       };
+            int number = list.Count();
+            return number;
+        }
     }
 }
