@@ -11,7 +11,7 @@ namespace DH8G3K_HFT_2022231.Models.Models.Helper_classes
         public string Title { get; set; }
 
 
-        public int Rating { get; set; }
+        public double Rating { get; set; }
 
         public override bool Equals(object obj)
         {

@@ -69,9 +69,9 @@ namespace DH8G3K_HFT_2022231.Endpoint.Controllers
         }
 
         [HttpGet]
-        public BestRatedVideogameInfo BestRatedVideogame()
+        public BestRatedVideogameInfo TenOutOfTenVideogames()
         {
-            var bestrated = this.videogamelogic.BestRatedVideogame();
+            var bestrated = this.videogamelogic.TenOutOfTenVideogames();
             return bestrated;
         }
     }

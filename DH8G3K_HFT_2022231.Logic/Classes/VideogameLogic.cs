@@ -59,21 +59,53 @@ namespace DH8G3K_HFT_2022231.Logic
         //non-crud methods
         public IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX(int year)
         {
-            throw new NotImplementedException();
+            var videogamesofyearx = from x in this.repo.ReadAll()
+                                where x.Release.Year == year
+                                select new VideogamesOfYearInfo()
+                                {
+                                    Title = x.Title,
+                                    Year = x.Release.Year
+                                };
+            return videogamesofyearx;
         }
 
         public IEnumerable<VideogameDeveloperInfo> VideogamesWithDeveloperNames()
         {
-            throw new NotImplementedException();
+            var info = from x in this.repo.ReadAll()
+                       join y in this.franchiserepo.ReadAll() on x.FranchiseId equals y.FranchiseId
+                       join z in this.developerrepo.ReadAll() on y.DeveloperId equals z.DeveloperId
+                       select new VideogameDeveloperInfo()
+                       {
+                           Title = x.Title,
+                           Developername = z.DeveloperName
+                       };
+            return info;
         }
 
         public IEnumerable<VideogameYearInfo> WhenWereVideogamesMade()
         {
-            throw new NotImplementedException();
+            var info = from x in this.repo.ReadAll()
+                       join y in this.repo.ReadAll() on x.VideogameId equals y.VideogameId
+                       select new VideogameYearInfo()
+                       {
+                           Title = x.Title,
+                           Release = y.Release.Year
+                       };
+            return info;
         }
-        public BestRatedVideogameInfo BestRatedVideogame()
+        public BestRatedVideogameInfo TenOutOfTenVideogames()
         {
-            throw new NotImplementedException();
+            var videogames = this.repo.ReadAll();
+            var bestratedinfo = from x in this.repo.ReadAll()
+                                    join y in videogames on x.VideogameId equals y.VideogameId
+                                    where x.Rating.Equals(10)
+                                    select new BestRatedVideogameInfo()
+                                    {
+                                        Title = x.Title,
+                                        Rating = x.Rating
+                                    };
+            BestRatedVideogameInfo bestrated = bestratedinfo.First();
+            return bestrated;
         }
     }
 }

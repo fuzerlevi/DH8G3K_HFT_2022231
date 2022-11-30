@@ -197,11 +197,11 @@ namespace DH8G3K_HFT_2022231.Client
             Console.ReadLine();
         }
 
-        static void BestRatedVideogame()
+        static void TenOutOfTenVideogames()
         {
-            BestRatedVideogameInfo bestrated = Rest.GetSingle<BestRatedVideogameInfo>("stat/BestRatedVideogame");
-            Console.WriteLine("The best rated videogame is:");
-            Console.WriteLine($"\"{bestrated.Title}\" with the rating of {bestrated.Rating}");
+            BestRatedVideogameInfo bestrated = Rest.GetSingle<BestRatedVideogameInfo>("stat/TenOutOfTenVideogames");
+            Console.WriteLine("List of all videogames rated 10/10:");
+            Console.WriteLine($"\"{bestrated.Title}\"");
             Console.ReadLine();
         }
 
@@ -237,10 +237,10 @@ namespace DH8G3K_HFT_2022231.Client
                 .Add("Read", () => Read("Videogame"))
                 .Add("Delete", () => Delete("Videogame"))
                 .Add("Update", () => Update("Videogame"))
-                .Add("Best rated videogame in franchise?", () => BestRatedVideogame())
                 .Add("Videogames of a specific year?", () => VideogamesOfYearX())
-                .Add("When was a specific videogame made?", () => WhenWereVideogamesMade())
-                .Add("Videogames with their developers names in their titles?", () => VideogamesWithDevelopernames())
+                .Add("List of all videogames rated 10/10?", () => TenOutOfTenVideogames())
+                .Add("List of all videogames with their year of release:", () => WhenWereVideogamesMade())
+                .Add("List of all videogames with their corresponding developers:", () => VideogamesWithDevelopernames())
                 .Add("Exit", ConsoleMenu.Close);
 
             var developerSubMenu = new ConsoleMenu(args, level: 1)

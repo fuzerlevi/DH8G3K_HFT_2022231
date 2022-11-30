@@ -16,6 +16,6 @@ namespace DH8G3K_HFT_2022231.Logic
         IEnumerable<VideogameDeveloperInfo> VideogamesWithDeveloperNames();
         IEnumerable<VideogameYearInfo> WhenWereVideogamesMade();
         IEnumerable<VideogamesOfYearInfo> VideogamesOfYearX(int year);
-        BestRatedVideogameInfo BestRatedVideogame();
+        BestRatedVideogameInfo TenOutOfTenVideogames();
     }
 }
